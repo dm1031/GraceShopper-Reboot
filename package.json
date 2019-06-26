@@ -37,7 +37,9 @@
     "webpack:dev": "npm run webpack -- --mode=development --watch",
     "seed": "node server/seed/run-seed",
     "nodemon": "./node_modules/.bin/nodemon",
-    "start:dev": "npm run seed && npm run nodemon server.js"
+    "start:dev": "npm run seed && npm run nodemon server.js",
+    "test": "jest ./tests --runInBand",
+    "test:dev": "DATABASE_URL=postgres://localhost/reboot_test_db npm run test -- --watch=true"
   },
   "keywords": [],
   "author": "",

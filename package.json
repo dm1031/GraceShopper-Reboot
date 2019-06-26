@@ -35,7 +35,9 @@
     "postinstall": "npm run webpack",
     "webpack": "webpack",
     "webpack:dev": "npm run webpack -- --mode=development --watch",
-    "seed": "node server/seed/run-seed"
+    "seed": "node server/seed/run-seed",
+    "nodemon": "./node_modules/.bin/nodemon",
+    "start:dev": "npm run seed && npm run nodemon server.js"
   },
   "keywords": [],
   "author": "",

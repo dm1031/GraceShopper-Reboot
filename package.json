@@ -26,11 +26,16 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1"
+  },
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "webpack",
-    "webpack:dev": "npm run webpack -- --mode=development --watch"
+    "webpack:dev": "npm run webpack -- --mode=development --watch",
+    "seed": "node server/seed/run-seed"
   },
   "keywords": [],
   "author": "",

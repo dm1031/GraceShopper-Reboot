@@ -3,14 +3,16 @@ const router = express.Router()
 
 const { User } = require('../../server/db/models')
 
-router.get('/', (req, res, next) => {
-  User.findOne({
-    where: {
-      email: req.body.email,
-      password: req.body.password
-    }
-  })
-    .then(user => res.send(user))
+router.post('/', (req, res, next) => {
+  return User.confirmCredentials(req.body)
+    .then(data => {
+      const { errors, loggedIn } = data
+      if (!errors) {
+        res.send(loggedIn)
+      } else {
+        throw new Error(errors)
+      }
+    })
     .catch(next)
 })
 

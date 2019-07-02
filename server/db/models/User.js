@@ -23,4 +23,22 @@ const User = db.define('user', {
   }
 })
 
+User.confirmCredentials = function(credentials) {
+  const results = {}
+  return User.findOne({
+    where: {
+      email: credentials.email
+    }
+  }).then(user => {
+    if (!user) {
+      results.errors = 'There is no user associated with this email.'
+    }
+    if (user && user.password !== credentials.password) {
+      results.errors = 'Password does not match our records for this email.'
+    } else {
+      results.loggedIn = user
+    }
+    return results
+  })
+}
 module.exports = User
